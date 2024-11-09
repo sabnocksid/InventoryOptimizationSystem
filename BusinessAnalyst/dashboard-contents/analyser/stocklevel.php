@@ -46,7 +46,6 @@ if (session_status() === PHP_SESSION_NONE) {
 <?php include '../layout/navbar.php'; ?>
 
 <div class="container">
-    <!-- Chart.js canvas -->
     <div class="chart-container">
         <h2 class="text-center">Product Stock Overview</h2>
         <canvas id="stockChart"></canvas>
@@ -72,7 +71,6 @@ if (session_status() === PHP_SESSION_NONE) {
                 include("../algorithhm/productPerformance.php");
                 $jsonData = ob_get_clean();
 
-                // Debugging: Output the raw JSON
 
                 $performanceData = json_decode($jsonData, true);
 
@@ -119,13 +117,12 @@ if (session_status() === PHP_SESSION_NONE) {
         var ctx = document.getElementById('stockChart').getContext('2d');
         
         <?php
-        // Prepare JavaScript data
         echo 'var performanceData = ' . $jsonData . ';';
         ?>
 
-        console.log(performanceData); // Log to verify data
+        console.log(performanceData); 
 
-        var labels = performanceData.map(item => item.product_name);
+        var labels = performanceData.map(item => item.product_id);
         var currentStock = performanceData.map(item => item.current_stock);
         var ROL = performanceData.map(item => item.ROL);
         
@@ -159,7 +156,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     x: {
                         title: {
                             display: true,
-                            text: 'Product Name'
+                            text: 'Product ID'
                         }
                     }
                 }

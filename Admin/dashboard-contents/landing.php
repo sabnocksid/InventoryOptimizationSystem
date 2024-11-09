@@ -2,12 +2,11 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$host = 'localhost'; // Database host
-$db = 'WheelsIOS'; // Database name
-$user = 'root'; // Database username
-$pass = ''; // Database password
+$host = 'localhost'; 
+$db = 'WheelsIOS'; 
+$user = 'root'; 
+$pass = ''; 
 
-// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: " . dirname(__FILE__) . "/../../login.php");
     exit();
@@ -15,15 +14,12 @@ if (!isset($_SESSION['user_id'])) {
 
 $role = $_SESSION['role'];
 
-// Connect to the database
 $conn = new mysqli($host, $user, $pass, $db);
 
-// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query to fetch user data
 $sql = "SELECT user_id, username, pin, role, created_at FROM users";
 $result = $conn->query($sql);
 ?>
@@ -32,7 +28,6 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>User Data</title>
-    <!-- Yeti Bootstrap theme from Bootswatch -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/yeti/bootstrap.min.css">
     <style>
         .fixed-button {
@@ -82,16 +77,13 @@ $result = $conn->query($sql);
         <?php endif; ?>
     </div>
 
-    <!-- Fixed Add User Button -->
     <a href="/wheelsIOS/admin/dashboard-contents/analyser/add_user.php" class="btn btn-success btn-lg fixed-button">Add User</a>
 
-    <!-- Bootstrap JavaScript and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <?php
-    // Close the connection
     $conn->close();
     ?>
 </body>

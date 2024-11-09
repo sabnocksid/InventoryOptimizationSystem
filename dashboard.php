@@ -26,6 +26,8 @@ if ($conn->connect_error) {
 <html>
 <head>
     <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 <body>
     <?php if ($role == 'inventory_manager'): ?>

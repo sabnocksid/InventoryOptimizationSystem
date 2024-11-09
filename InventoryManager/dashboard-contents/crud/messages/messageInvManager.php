@@ -29,10 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = $_POST['message'];
         $report_type = $_POST['report_type'];
 
-        // Retrieve the sender's role from the session
         $sender_user_type = $_SESSION['role']; 
 
-        // Get the role of the receiver to determine the recipient_user_type
         $receiver_role_query = "SELECT role FROM users WHERE user_id = ?";
         $stmt = $conn->prepare($receiver_role_query);
         $stmt->bind_param("i", $receiver_id);
@@ -111,13 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Chat App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/simplex/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> (Role: <?php echo htmlspecialchars($_SESSION['role']); ?>)</h1>
-        <h2 class="mt-4">Send a Message</h2>
+    <h6 class="mt-5">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> (Role: <?php echo htmlspecialchars($_SESSION['role']); ?>)</h6>
+    <h2 class="mt-4">Send a Message</h2>
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="receiver_id">Receiver:</label>
@@ -163,5 +160,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </html>
 
 <?php
-$conn->close();
+// $conn->close();
 ?>

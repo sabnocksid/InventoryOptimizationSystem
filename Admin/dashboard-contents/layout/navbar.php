@@ -13,7 +13,7 @@ $projectRoot = '/wheelsIOS/Admin/'; // Adjust this to match your project's URL s
 $dashboardURL = $projectRoot . 'dashboard-contents/landing.php';
 $activityURL = $projectRoot . 'dashboard-contents/analyser/activityinfo.php';
 $userActivity = $projectRoot . 'dashboard-contents/analyser/userActivities.php';
-$messageURL = $projectRoot . 'dashboard-contents/analyser/messageInvManager.php';
+$messageURL = $projectRoot . 'dashboard-contents/messages/messageInvManager.php';
 $logoutURL = $projectRoot . '../logout.php';
 ?>
 
@@ -35,7 +35,7 @@ $logoutURL = $projectRoot . '../logout.php';
                 <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'userActivities.php' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?php echo $userActivity; ?>">Users Activity</a>
                 </li>
-                <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'messageHistory.php' ? 'active' : ''; ?>">
+                <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'messageInvManager.php' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?php echo $messageURL; ?>">Message</a>
                 </li>
                

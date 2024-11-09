@@ -8,21 +8,17 @@ $db = 'WheelsIOS'; // Database name
 $user = 'root'; // Database username
 $pass = ''; // Database password
 
-// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Connect to the database
 $conn = new mysqli($host, $user, $pass, $db);
 
-// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Perform the SQL JOIN query to get sales and product details
 $sql = "
     SELECT 
         s.sales_id, 
@@ -37,9 +33,9 @@ $sql = "
         product p 
     ON 
         s.product_id = p.product_id
+    ORDER by sale_date
 ";
 
-// Execute the query
 $result = $conn->query($sql);
 
 ?>
@@ -101,7 +97,6 @@ $result = $conn->query($sql);
                 <thead>
                     <tr>
                         <th>Sales Date</th>
-                        <th>Sales ID</th>
                         <th>Product Name</th>
                         <th>Picture</th>
                         <th>Sales Quantity</th>
@@ -113,7 +108,6 @@ $result = $conn->query($sql);
                         <tr>
                            <td><?php echo htmlspecialchars($row['sale_date']); ?></td>
 
-                            <td><?php echo htmlspecialchars($row['sales_id']); ?></td>
                             <td><?php echo htmlspecialchars($row['product_name']); ?></td>
                             <td>
                                 <?php if (!empty($row['picture'])): ?>

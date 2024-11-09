@@ -15,7 +15,6 @@ $dashboardURL = $projectRoot . 'dashboard-contents/landing.php';
 $purchaseURL = $projectRoot . 'dashboard-contents/crud/purchase/purchase_display.php';
 $salesURL = $projectRoot . 'dashboard-contents/crud/sales/sales_display.php';
 $stockURL = $projectRoot . 'dashboard-contents/crud/stock/stock_display.php';
-$performanceURL = $projectRoot . 'dashboard-contents/crud/algorithm/product_performance.php';
 $messageURL = $projectRoot . 'dashboard-contents/crud/messages/messageInvManager.php';
 
 $logoutURL = $projectRoot . '../logout.php';
@@ -42,9 +41,7 @@ $logoutURL = $projectRoot . '../logout.php';
                 <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'stock_display.php' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?php echo $stockURL; ?>">Stock</a>
                 </li>
-                <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'product_performance.php' ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?php echo $performanceURL; ?>">Re-order Level</a>
-                </li>
+
 
                 <li class="nav-item <?php echo basename($_SERVER['PHP_SELF']) == 'messageInvManager.php' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?php echo $messageURL; ?>">Message</a>

@@ -38,12 +38,11 @@ $sql = "
         product p 
     ON 
         pu.product_id = p.product_id
+    ORDER by purchase_date
 ";
 
-// Execute the query
 $result = $conn->query($sql);
 
-// Debugging: Check if query execution is successful
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
@@ -107,7 +106,6 @@ if (!$result) {
                 <thead>
                     <tr>
                         <th>Purchase Date</th>
-                        <th>Purchase ID</th>
                         <th>Product Name</th>
                         <th>Picture</th>
                         <th>Purchase Quantity</th>
@@ -118,7 +116,6 @@ if (!$result) {
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
                             <td><?php echo htmlspecialchars($row['purchase_date']); ?></td>
-                            <td><?php echo htmlspecialchars($row['purchase_id']); ?></td>
                             <td><?php echo htmlspecialchars($row['product_name']); ?></td>
                             <td>
                                 <?php if (!empty($row['picture'])): ?>
@@ -142,11 +139,9 @@ if (!$result) {
     </div>
 </div>
 
-<!-- Fixed Add Purchase Button -->
 <a href="purchase_add.php" class="btn btn-primary fixed-btn">Add Purchase</a>
 <a href="javascript:void(0);" id="downloadCSV" class="btn btn-success fixed-btn-left">Download CSV</a>
 
-<!-- Bootstrap JavaScript and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
